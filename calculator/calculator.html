@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css" />
+  </head>
+  <body>
+    <div id="calc">
+      <div id="mode-bar">
+        <button class="mode-tab active" onclick="setMode('std')">
+          Standard
+        </button>
+        <button class="mode-tab" onclick="setMode('sci')">Scientific</button>
+        <button class="mode-tab" onclick="setMode('unit')">Converter</button>
+      </div>
+
+      <div id="display">
+        <div id="expr"></div>
+        <div id="result">0</div>
+        <div id="history"></div>
+      </div>
+
+      <div id="grid"></div>
+
+      <div id="unit-panel">
+        <div class="unit-row">
+          <label>Category</label>
+          <select
+            id="unit-cat"
+            onchange="buildUnitConv()"
+            style="flex: 1; width: auto"
+          >
+            <option value="len">Length</option>
+            <option value="mass">Mass</option>
+            <option value="temp">Temperature</option>
+            <option value="area">Area</option>
+            <option value="vol">Volume</option>
+            <option value="speed">Speed</option>
+            <option value="time">Time</option>
+            <option value="data">Data</option>
+            <option value="energy">Energy</option>
+            <option value="pressure">Pressure</option>
+          </select>
+        </div>
+        <div class="unit-row">
+          <label>From</label>
+          <input
+            id="unit-from-val"
+            type="number"
+            value="1"
+            oninput="convertUnit()"
+          />
+          <select id="unit-from" onchange="convertUnit()"></select>
+        </div>
+        <div class="unit-row">
+          <label>To</label>
+          <input
+            id="unit-to-val"
+            type="number"
+            readonly
+            style="opacity: 0.85"
+          />
+          <select id="unit-to" onchange="convertUnit()"></select>
+        </div>
+        <div id="unit-result"></div>
+      </div>
+    </div>
+
+    <script src="calculator.js"></script>
+  </body>
+</html>
